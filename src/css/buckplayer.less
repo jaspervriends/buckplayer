@@ -1,0 +1,278 @@
+.buckplayer {
+    background: #161616;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+    // Player fullscreen
+    &.fullscreen {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0px !important;
+    }
+
+    .videoplayer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    &.dragging-progress-started {
+        .videoplayer {
+            opacity: 0.4;
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+            filter: blur(5px);
+        }
+
+        .controls {
+            .progress-container {
+                .progress-timer {
+                    width: 120px;
+                    margin-left: -65px;
+
+                    canvas {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .videoplayer-overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0);
+    }
+
+    // Control bar
+    .controls {
+        position: absolute;
+        z-index: 5;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        transition: 250ms all ease-in;
+        background: #242424;
+
+        /**
+         * Buttons
+         */
+        button {
+            display: block;
+            background: none;
+            border: none;
+            padding: 0;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .play {
+            color: #8c8c8c;
+            width: 70px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            transition: 250ms all ease-in;
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 7;
+
+            &:hover {
+                color: #FFFFFF;
+                -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+            }
+
+            &.paused {
+                color: #000000;
+            }
+        }
+
+        .fullscreen {
+            color: #8c8c8c;
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            transition: 250ms all ease-in;
+
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            &[disabled] {
+                opacity: 0.6;
+                cursor: auto;
+
+                &:hover {
+                    color: #8c8c8c;
+                    filter: none;
+                    -webkit-filter: none;
+                }
+            }
+
+            &:hover {
+                color: #FFFFFF;
+                -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+            }
+        }
+
+        .settings {
+            color: #8c8c8c;
+            width: 40px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            transition: 250ms all ease-in;
+
+            position: absolute;
+            right: 50px;
+            bottom: 0;
+
+            &:hover {
+                color: #FFFFFF;
+                -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+            }
+
+            &.opened {
+                background: #FFFFFF;
+                color: #8d8d8d;
+                bottom: 7px;
+                height: 53px;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+
+        .volume-control {
+            position: absolute;
+            right: 90px;
+            bottom: 0;
+
+            .volume {
+                color: #8c8c8c;
+                width: 50px;
+                height: 60px;
+                text-align: center;
+                line-height: 60px;
+                font-size: 20px;
+                transition: 250ms all ease-in;
+
+                &:hover {
+                    color: #FFFFFF;
+                    -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.5));
+                }
+            }
+        }
+
+        /**
+         * Progress container
+         */
+        .progress-container {
+            position: absolute;
+            z-index: 6;
+            bottom: 0;
+            left: 0;
+            right: 150px;
+            height: 60px;
+            transition: 250ms all ease-in;
+            cursor: pointer;
+
+            //-webkit-user-drag: none;
+            //-khtml-user-drag: none;
+            //-moz-user-drag: none;
+            //-o-user-drag: none;
+            //user-drag: none;
+
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            .progress-timer {
+                position: absolute;
+                bottom: 80px;
+                top: auto;
+                background: rgba(0, 0, 0, 0.5);
+                color: #FFFFFF;
+                font-size: 14px;
+                padding: 5px;
+                text-align: center;
+                width: 40px;
+                margin-left: -20px;
+                border-radius: 4px;
+                z-index: 10;
+
+                canvas {
+                    width: 120px;
+                    border-radius: 4px;
+                    display: none;
+                }
+            }
+
+            .progress-buffer {
+                height: 60px;
+                position: absolute;
+                width: 0%;
+                background: #303030;
+                z-index: 7;
+                transition: 250ms all ease-in;
+            }
+
+            .progress-bar {
+                height: 60px;
+                position: absolute;
+                width: 0%;
+                background: #3c3c3c;
+                z-index: 8;
+                transition: 100ms all ease-in;
+
+                .progress-bar-pointer {
+                    position: absolute;
+                    right: 0;
+                    background: #4b4b4b;
+                    width: 2px;
+                    top: 0;
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    // Hide control bar
+    &.controls-hidden {
+        .controls {
+            bottom: -60px;
+
+            .progress-container {
+                bottom: 4px;
+                right: 0;
+
+                .progress-bar {
+                    background: #FFFFFF;
+                }
+            }
+        }
+    }
+}

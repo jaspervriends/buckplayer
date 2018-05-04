@@ -1,0 +1,17 @@
+{
+  "name": "buckplayer",
+  "version": "1.0.0",
+  "description": "Buckplayer is an HTML5 video player, fully customizable",
+  "main": "buckplayer.js",
+  "directories": {
+    "example": "examples",
+    "source": "src"
+  },
+  "scripts": {},
+  "author": "Jasper Vriends",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
