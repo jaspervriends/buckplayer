@@ -31,7 +31,10 @@ let playerConfig = {
     hideControls: 2500, // milliseconds or false
     
     src: {
-        720: "/video.mp4"
+        720: "/video.mp4", // Chrome
+        720: "/video.webm", // Other browsers
+        1080: "/video_hd.mp4",
+        1080: "/video_hd.webm"
     },
     
     url: 'https://www.buckplayer.com/',
