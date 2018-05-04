@@ -3,7 +3,7 @@ Buckplayer is a modern HTML5 video player.
 
 ### **Buckplayer is in development and still unstable**
 
-##**Features:**
+## **Features:**
 * HTML5, Javascript (ES6 written) and CSS (as LESS written)
 * _**No**_ flash
 * Fully customizable
