@@ -1,7 +1,7 @@
 # Buckplayer
 Buckplayer is a modern HTML5 video player.
 
-###**Buckplayer is in development and still unstable**
+### **Buckplayer is in development and still unstable**
 
 ##**Features:**
 * HTML5, Javascript (ES6 written) and CSS (as LESS written)
@@ -14,7 +14,7 @@ Buckplayer is a modern HTML5 video player.
 * Many options
 * API to use (.play(), .pause()) and callback functions as onPlay, onPause, onEnd, onPlaying
 
-##Example
+## Example
 ````javascript 1.8
 let playerConfig = {
     title: "Geat video",
@@ -42,7 +42,7 @@ let playerConfig = {
 let player = document.querySelector(".video").buckplayer(playerConfig);
 ````
 
-##Initialize player
+## Initialize player
 
 *Default:*
 ````javascript 1.8
@@ -54,7 +54,7 @@ let player = document.querySelector(".buckplayer").buckplayer(playerConfig);
 $(".buckplayer").buckplayer(playerConfig);
 ````
 
-##API callbacks
+## API callbacks
 ````javascript 1.8
 let playerConfig = {
     onPlay: function() {
