@@ -22,115 +22,78 @@
     <script src="../../dev/fontawesome-all.min.js"></script>
 </head>
 <body>
-    <div class="dummy" style="display: none">
-        <div class="bplr_skin_default_container" id="">
-            <div class="bplr_overlay" id="buckPlayer_overlay_1">
-                <div class="errorText" id="buckPlayer_errortext_1">ERROR</div>
-            </div>
+    <div class="buckplayer">Loading</div>
 
-            <div class="loading" id="buckPlayer_loading_1">
-                <span class="fa fa-cog fa-spin"></span>
-            </div>
+    <script type="module">
+        let playerConfig = {
+            // Player information
+            title: "Geat player",
+            description: "Cool description",
 
-            <div class="bplr_skin_default_contextmenu" id="buckPlayer_contextmenu_1" style="display: none;">
-                <div class="bplr_skin_default_contextmenu_int" id="buckPlayer_contextmenu_actionplay_1">Pause / Play</div>
-                <div class="bplr_skin_default_contextmenu_int" id="buckPlayer_contextmenu_actionplayfromzero_1">Play from start</div>
-                <div class="bplr_skin_default_contextmenu_int" id="buckPlayer_contextmenu_geturl_1">Go to player URL</div>
-                <div class="bplr_skin_default_contextmenu_int bplr_skin_default_contextmenu_nopointer" id="buckPlayer_contextmenu_companyname_1">&copy; MyCompany</div>
-                <div class="bplr_skin_default_contextmenu_int" id="buckPlayer_contextmenu_actionjlr_1">&copy; '+'B' +''+ 'u' +''+'c'+''+ 'k' +''+'P'+''+ 'l'+''+'a'+''+ 'y' +''+ 'e' +''+ 'r' +' - Jasler.nl</div>
-            </div>
+            // Auto play
+            autoplay: true,
 
-            <div id="buckPlayer_logo_1" class="bplr_skin_default_containLogo"></div>
+            // Template
+            template: 'default',
 
-            <div class="playerControls" id="buckPlayer_plcontr_1">
-                <div id="buckPlayer_playerControlBar_1" class="buckPlayer_btm_lo4'+ mediaplr +'"></div>
-                <div class="play" id="buckPlayer_play_btn_1"><span class="fa fa-play"></span>
-                </div>
-                <div class="time"><span id="buckPlayer_pl_now_1">0:00</span>  <span class="bplr_6t43" id="buckPlayer_pl_max_1">/ 0:00</span>
-                </div>
-                <div class="screenwidth" id="buckPlayer_fullscreen_1"><span class="fa fa-expand"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+            // Volume
+            volume: 100,
 
+            // Width Height
+            width: '720',
+            height: '350',
 
+            fullscreen: true,
 
-    <div class="buckplayer">
-        Loading
-    </div>
+            preload: true,
 
+            hideControls: 2500,
 
-<script type="module">
-    let playerConfig = {
-        // Player information
-        title: "Geat player",
-        description: "Cool description",
+            stretchVideo: false,
 
-        // Auto play
-        autoplay: true,
+            src: {
+                144: false,
+                240: false,
+                360: false,
+                420: false,
+                720: "../../site/video/video.mp4",
+                1080: false
+            },
 
-        // Template
-        template: 'default',
+            url: 'https://www.buckplayer.com/',
+            logo: 'https://www.buckplayer.com/images/logo.png',
+            videoUrl: 'https://www.buckplayer.com/demovideo',
 
-        // Volume
-        volume: 100,
+            onPlay: function()
+            {
+                console.log("Started!");
+            },
 
-        // Width Height
-        width: '720',
-        height: '350',
+            onPause: function()
+            {
+                console.log("Paused!");
+            },
 
-        fullscreen: true,
+            onEnd: function()
+            {
+                console.log("Ended!");
+            },
 
-        preload: true,
+            onPlaying: function(time)
+            {
+                console.log("Time elapsed: " + time);
+            }
+        };
 
-        hideControls: 2500,
+        let player = document.querySelector(".buckplayer").buckplayer(playerConfig);
 
-        stretchVideo: false,
+        // API test
+        setInterval(function() {
+            // player.play();
+        }, 1500);
 
-        src: {
-            144: false,
-            240: false,
-            360: false,
-            420: false,
-            720: "../../site/video/video.mp4",
-            1080: false
-        },
-
-        url: 'https://www.buckplayer.com/',
-        logo: 'https://www.buckplayer.com/images/logo.png',
-        videoUrl: 'https://www.buckplayer.com/demovideo',
-
-        onPlay: function()
-        {
-            console.log("Started!");
-        },
-
-        onPause: function()
-        {
-            console.log("Paused!");
-        },
-
-        onEnd: function()
-        {
-            console.log("Ended!");
-        },
-
-        onPlaying: function(time)
-        {
-            console.log("Time elapsed: " + time);
-        }
-    };
-
-    let player = document.querySelector(".buckplayer").buckplayer(playerConfig);
-
-    setInterval(function() {
-        // player.play();
-    }, 1500);
-
-    // $(".buckplayer").buckplayer(playerConfig);
-
-    // buckplayer('.buckplayer', playerConfig);
-</script>
+        // jQuery alternative
+        // $(".buckplayer").buckplayer(playerConfig);
+    </script>
 </body>
 </html>
